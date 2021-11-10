@@ -22,5 +22,23 @@ fn main() {
     
     for coin in coins {
         println!("{:?} has a value of {} cents", coin, coin.value_in_cents());
+        print_luck_for_penny(&coin);
+        print_penny_or_other(&coin);
+    }
+}
+
+// The 'discard' symbol (_) indicates we don't wish to use the value.
+fn print_luck_for_penny(coin: &Coin){
+    match coin {
+        Coin::Penny => println!("Luck you!"),
+        _ => println!("Not so lucky :(")
+    }
+}
+
+// We can use the value in a 'catch all' arm like so
+fn print_penny_or_other(coin: &Coin){
+    match coin {
+        Coin::Penny => println!("It's a {:?}, lucky you!", Coin::Penny),
+        other_coin => println!("It's a {:?}, hard luck.", other_coin)
     }
 }
