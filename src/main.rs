@@ -42,3 +42,13 @@ fn print_penny_or_other(coin: &Coin){
         other_coin => println!("It's a {:?}, hard luck.", other_coin)
     }
 }
+
+// Rust's compiler requires us to handle all cases.
+// If we only wish to take action for certain values, we can inform the compiler that 
+// in all other cases, we really don't want to do anything.
+fn print_penny_or_do_nothing(coin: &Coin){
+    match coin {
+        Coin::Penny => println!("Do a celebration dance!"),
+        _ => () 
+    }
+}
