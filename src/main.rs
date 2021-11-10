@@ -1,18 +1,26 @@
-enum Message {
-    Quit, // this variant is like the unit struct
-    Move { x: i32, y: i32 }, // this variant has named fields
-    Write(String), // this variant takes a single string value
-    ChangeColor(i32, i32, i32), // this variant has tuple-like structure
+#[derive(Debug)]
+enum Coin {
+    Penny,
+    Nickel,
+    Dime,
+    Quarter,
 }
 
-// enums can have methods, yay!
-impl Message {
-    fn call(&self) {
-        // method body would be defined here
-        // Pattern matching here offers powerful functionality!
+impl Coin {
+    fn value_in_cents(&self) -> u8 {
+        match self {
+            Coin::Penny => 1,
+            Coin::Nickel => 5,
+            Coin::Dime => 10,
+            Coin::Quarter => 25,
+        }
     }
 }
+
 fn main() {
-    let m = Message::Write(String::from("hello"));
-    m.call();
+    let coins = [Coin::Penny, Coin::Nickel, Coin::Dime, Coin::Quarter];
+    
+    for coin in coins {
+        println!("{:?} has a value of {} cents", coin, coin.value_in_cents());
+    }
 }
