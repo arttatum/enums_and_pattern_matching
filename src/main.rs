@@ -55,9 +55,9 @@ fn print_penny_or_do_nothing(coin: &Coin) {
 
 // The same logic can be executed using the if_let construct
 fn print_penny_or_do_nothing_if_let(coin: &Coin) {
- if let Coin:Penny = coin {
-    Coin::Penny => println!("Do a celebration dance!");
- }   
+    if let Coin::Penny = coin {
+        println!("Do a celebration dance!");
+    }   
 }
 
 fn printpenny_or_other_if_let(coin: &Coin) {
